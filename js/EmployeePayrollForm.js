@@ -33,7 +33,6 @@ function resetForm()
     const output = document.querySelector('#salaryOutput');
     output.textContent = 400000;
 }
-
 function save()
 {
     let department = [];
@@ -59,7 +58,7 @@ function save()
     }
     return false;
 }
-
+//retriving data from form
 const createEmployeePayroll=()=>
 { 
     let employeePayrollData = new EmployeePayRoll();
@@ -72,7 +71,7 @@ const createEmployeePayroll=()=>
     employeePayrollData.startDate = new Date(getInputElementValue('#year'),getInputElementValue('#month'),getInputElementValue('#day'));
     return employeePayrollData; 
 }
-
+//Anonoymous methods to read the data from form
 const getSelectedValues = (propertyValue) =>
 {
     let allItems = Array.from(document.querySelectorAll(propertyValue)); 
