@@ -1,3 +1,5 @@
+//Validation of Name
+//Displaying choosen salary
 window.addEventListener('DOMContentLoaded', (event) => 
 {
     const name = document.querySelector('#Name'); 
@@ -33,6 +35,7 @@ function resetForm()
     const output = document.querySelector('#salaryOutput');
     output.textContent = 400000;
 }
+//saving the form and displaying details in alert box
 function save()
 {
     let department = [];
