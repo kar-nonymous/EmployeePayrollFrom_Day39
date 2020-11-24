@@ -34,6 +34,7 @@ function resetForm()
 { 
     const output = document.querySelector('#salaryOutput');
     output.textContent = 400000;
+    document.querySelector('.error-name').textContent = "";
 }
 //saving the form and displaying details in alert box
 function save()
