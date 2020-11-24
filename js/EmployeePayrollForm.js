@@ -1,3 +1,5 @@
+//Validation of Name
+//Displaying choosen salary
 window.addEventListener('DOMContentLoaded', (event) => 
 {
     const name = document.querySelector('#Name'); 
@@ -32,8 +34,9 @@ function resetForm()
 { 
     const output = document.querySelector('#salaryOutput');
     output.textContent = 400000;
+    document.querySelector('.error-name').textContent = "";
 }
-
+//saving the form and displaying details in alert box
 function save()
 {
     let department = [];
@@ -44,7 +47,9 @@ function save()
     {
         try
         {
-            alert(createEmployeePayroll().toString());
+            let employee = createEmployeePayroll();
+            CreateAndSaveLocalStorage(employee);
+            alert(employee.toString());
             return true;
         }
         catch(e)
@@ -59,7 +64,22 @@ function save()
     }
     return false;
 }
-
+//Function to create local storage
+function CreateAndSaveLocalStorage(employeeEntry)
+{
+    let employeePayrollList = [];
+    employeePayrollList = JSON.parse(localStorage.getItem("NewEmployeePayrollList")); 
+    if(employeePayrollList != undefined)
+    {
+        employeePayrollList.push(employeeEntry); 
+    } 
+    else
+    { 
+        employeePayrollList = [employeeEntry] ;
+    } 
+    localStorage.setItem("NewEmployeePayrollList", JSON.stringify(employeePayrollList))
+}
+//retriving data from form
 const createEmployeePayroll=()=>
 { 
     let employeePayrollData = new EmployeePayRoll();
@@ -72,7 +92,7 @@ const createEmployeePayroll=()=>
     employeePayrollData.startDate = new Date(getInputElementValue('#year'),getInputElementValue('#month'),getInputElementValue('#day'));
     return employeePayrollData; 
 }
-
+//Anonoymous methods to read the data from form
 const getSelectedValues = (propertyValue) =>
 {
     let allItems = Array.from(document.querySelectorAll(propertyValue)); 

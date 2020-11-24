@@ -38,7 +38,7 @@ class EmployeePayRoll
    set note(note) { 
      this._note = note; 
    }
- 
+   //Date validation
    get startDate() { return this._startDate; }
    set startDate(startDate) { 
     let now = new Date();
